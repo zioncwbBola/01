@@ -15,7 +15,7 @@ const SignInPage = () => {
     if (res?.error) {
       alert("Erro ao autenticar: " + res.error);
     } else {
-      router.push("/dashboard");
+      router.push("/painel");
     }
   };
 
