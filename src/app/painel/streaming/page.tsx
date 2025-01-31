@@ -2,8 +2,16 @@
 
 import { useState, useEffect } from "react";
 
+// Definição do tipo Playlist
+type Playlist = {
+  id: string;
+  snippet: {
+    title: string;
+  };
+};
+
 export default function CPanel() {
-  const [playlists, setPlaylists] = useState([]);
+  const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -15,7 +23,7 @@ export default function CPanel() {
     setLoading(true);
     try {
       const response = await fetch("/api/youtube/playlists");
-      const data = await response.json();
+      const data: { items: Playlist[] } = await response.json();
       setPlaylists(data.items || []);
     } catch (error) {
       console.error("Erro ao buscar playlists:", error);
@@ -45,7 +53,7 @@ export default function CPanel() {
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Painel de Controle - YouTube</h1>
-      
+
       {/* Criar Playlist */}
       <div className="card bg-base-100 shadow-xl p-6 mb-8">
         <h2 className="text-xl font-semibold">Criar Nova Playlist</h2>
@@ -55,11 +63,15 @@ export default function CPanel() {
           value={newPlaylistTitle}
           onChange={(e) => setNewPlaylistTitle(e.target.value)}
         />
-        <button className="btn btn-primary mt-4" onClick={createPlaylist} disabled={loading}>
+        <button
+          className="btn btn-primary mt-4"
+          onClick={createPlaylist}
+          disabled={loading}
+        >
           {loading ? "Criando..." : "Criar Playlist"}
         </button>
       </div>
-      
+
       {/* Listar Playlists */}
       <h2 className="text-xl font-semibold mb-4">Playlists do Canal</h2>
       {loading ? (
