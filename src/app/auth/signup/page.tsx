@@ -23,7 +23,7 @@ const SignUpPage = () => {
       return;
     }
     
-    router.push("/signin");
+    router.push("/auth/signin");
   };
 
   return (
