@@ -8,13 +8,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String?
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  Post      Post[]
+  id       String   @id @default(cuid()) // A propriedade id deve ser do tipo String e estar configurada como chave primária
+  email    String   @unique
+  password String
+  name     String?
 }
+
 
 model Event {
   id          Int      @id @default(autoincrement())
@@ -25,12 +24,46 @@ model Event {
   updatedAt   DateTime @updatedAt
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
+
+
+model PrayerRequest {
+  id        String   @id @default(uuid())
+  name      String
+  prayer    String
+  isPublic  Boolean  @default(false)
+  status    String   @default("pending") // pending, approved, rejected
   createdAt DateTime @default(now())
-  updatedAt DateTime
-  authorId  String
-  User      User     @relation(fields: [authorId], references: [id])
+}
+
+model MembershipRequest {
+  id          String   @id @default(uuid())
+  fullName    String
+  email       String
+  phone       String
+  requestType RequestType
+  status      RequestStatus @default(PENDING)
+  createdAt   DateTime @default(now())
+}
+
+enum RequestType {
+  DISCIPLESHIP
+  INTEGRATION
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model CommunitySupportRequest {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  phone       String
+  category    String   // ajuda comunitária, apoio da igreja, oração, agradecimento
+  message     String
+  isPublic    Boolean  // público ou privado
+  status      String   @default("pendente")
+  createdAt   DateTime @default(now())
 }

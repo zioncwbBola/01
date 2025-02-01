@@ -1,4 +1,4 @@
-
+// src\app\api\auth\signup\route.ts
 import bcrypt from 'bcryptjs';
 // src/app/api/auth/signup/route.ts
 import  prisma from "@/lib/prisma";
