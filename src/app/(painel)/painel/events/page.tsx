@@ -1,7 +1,6 @@
 "use client";
 import Layout from "@/components/layout";
 import { useState, useEffect } from "react";
-
 interface Event {
   id?: number;
   title: string;

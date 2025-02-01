@@ -191,7 +191,6 @@
 //   },
 // };
 // src/lib/auth.ts
-//import { prisma } from "@prisma/client";
 import { compare } from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";

@@ -1,7 +1,13 @@
+import HeroesHomePage from "@/components/ui/Heroes/HeroesHomePage";
+import NavbarHomePage from "@/components/ui/Navbar/NavbarHome";
+
 export default function Home() {
   return (
+    <>
+    <NavbarHomePage />
     <main className="flex items-center justify-center min-h-screen">
-      <h1 className="text-4xl font-bold">Bem-vindo ao site da Comunidade Cristã Caminho da Vida!</h1>
+      <HeroesHomePage />
     </main>
+    </>
   );
 }

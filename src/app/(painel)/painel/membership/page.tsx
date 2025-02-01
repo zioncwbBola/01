@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/app/painel/membership/page.tsx
 'use client';
+import Layout from '@/components/layout';
 import { useEffect, useState } from 'react';
 
 export default function MembershipPanel() {
@@ -16,6 +17,7 @@ export default function MembershipPanel() {
   }, []);
 
   return (
+    <Layout>
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Solicitações de Membresia</h1>
       <div className="overflow-x-auto">
@@ -41,5 +43,6 @@ export default function MembershipPanel() {
         </table>
       </div>
     </div>
+    </Layout>
   );
 }

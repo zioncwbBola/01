@@ -1,5 +1,6 @@
 "use client";
 
+import Layout from "@/components/layout";
 import { useState, useEffect } from "react";
 
 // Definição do tipo Playlist
@@ -51,6 +52,7 @@ export default function CPanel() {
   };
 
   return (
+    <Layout>
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Painel de Controle - YouTube</h1>
 
@@ -97,5 +99,6 @@ export default function CPanel() {
         </ul>
       )}
     </div>
+    </Layout>
   );
 }

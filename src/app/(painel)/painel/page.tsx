@@ -9,13 +9,13 @@
 //     </Layout>
 //   );
 // }
-
+// src/app/painel/page.tsx
 "use client";
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-
+import Layout from "@/components/layout";
 export default function Painel() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -32,6 +32,7 @@ export default function Painel() {
 
   if (status === "authenticated") {
     return (
+      <Layout>
       <div className="p-6 max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">Painel de Controle</h1>
         <p>Bem-vindo, {session.user?.name}!</p>
@@ -39,6 +40,7 @@ export default function Painel() {
           Sair
         </button>
       </div>
+      </Layout>
     );
   }
 
